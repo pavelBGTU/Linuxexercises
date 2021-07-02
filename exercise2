@@ -1,7 +1,7 @@
 #!/bin/bash
-o=0
-txt=".txt"
-text="Файл"
+o=0                 #это переменные
+txt=".txt"          #для конкатенации
+text="Файл"         #имен файлов и их наполнения
 path="Catalog"
 mkdir $path
 for (( year = 2010; year < 2018; year++))
