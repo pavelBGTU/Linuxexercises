@@ -1,0 +1,25 @@
+#!/bin/bash
+o=0
+txt=".txt"
+text="Файл"
+path="Catalog"
+mkdir $path
+for (( year = 2010; year < 2018; year++))
+do
+mkdir $path/$year
+for (( month = 1; month < 13; month++))
+do
+if [ $month -lt " 10" ]
+then
+printmonth=$o$month
+else
+printmonth=$month
+fi
+mkdir $path/$year/$printmonth
+for (( file = 1; file < 6; file++))
+do
+filename=$o$o$file$txt
+echo $text $o$o$file > $path/$year/$printmonth/$filename
+done
+done
+done
