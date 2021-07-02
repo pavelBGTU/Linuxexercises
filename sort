@@ -1,0 +1,14 @@
+#!/bin/bash
+#сортируем файлы по владельцам и распихиваем в соответствующие папки
+
+directory="/home/titov/dev/testdir"
+
+ownermassive=$(ls $directory -l | cut -d " " -f 3 | uniq )
+echo $ownermassive #> qwert
+
+for owner in $ownermassive
+do
+    mkdir $directory/$owner
+    find $directory -user $owner -exec cp -v {} $directory/$owner \;
+done
+
