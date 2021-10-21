@@ -1,0 +1,31 @@
+#!/bin/bash
+#install gitlab runner on you're machine (debian)
+
+#package:
+#https://docs.gitlab.com/runner/install/linux-manually.html
+
+#arch = architecture (amd64, arm64, etc)
+arch=amd64
+
+packagemanager=deb
+#or rpm for centos
+
+#Choose a version and download a binary
+curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/${packagemanager}/gitlab-runner_${arch}.${packagemanager}"
+
+#Install debian
+sudo dpkg -i gitlab-runner_${arch}.${packagemanager} -y
+
+#Install centos
+#rpm -i gitlab-runner_${arch}.${packagemanager} -y
+
+#register a runner
+#https://docs.gitlab.com/runner/register/index.html#linux
+
+sudo gitlab-runner register
+#Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).
+#Enter the token you obtained to register the runner.
+#Enter a description for the runner. You can change this value later in the GitLab user interface.
+#Enter the tags associated with the runner, separated by commas. You can change this value later in the GitLab user interface.
+#Provide the runner executor. For most use cases, enter docker.
+#If you entered docker as your executor, you’ll be asked for the default image to be used for projects that do not define one in .gitlab-ci.yml.
